@@ -1,32 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // Funtional component
-const SearchBar = () => {
-  return <input />;
-};
-
-// console.log('Component', Component);
+// const SearchBar = () => {
+//   return <input />;
+// };
 
 // Class component
-// class SearchBar extends Component {
+class SearchBar extends React.Component {
+  
+  constructor(props) {
+  	super(props);
 
-// 	constructor(props) {
-// 		super(props);
+  	this.state = { term : '' }
+  }
 
-// 		this.state = { term: '' };
-// 	}
+  
+  render() {
+    return (
+      <div>
+        <input value={this.state.term} onChange={this.onInputChange.bind(this)} />
+      </div>
+    );
+  }
 
-// 	render() {
-// 		return (
-// 				<div>
-// 					<input
-// 						value = {this.state.term}
-// 						onChange = { event => { this.setState({ term: event.target.value }); } }
-// 					/>
-// 				</div>
-// 			)
+  //event-handler
+  onInputChange(event) {
+  	this.setState( {term : event.target.value} );
+  }
 
-// 	}
-// }
+}
 
 export default SearchBar;
